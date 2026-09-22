@@ -1,0 +1,6 @@
+{
+  "name": "Aplikasi Pesanan & Cicilan Pakaian",
+  "description": "Pencatatan pesanan pembelian pakaian, riwayat pembayaran DP dan cicilan, invoice berformat ByUzmaa, pengingat WhatsApp, dan database Google Sheets di Google Drive pribadi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
