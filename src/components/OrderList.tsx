@@ -13,6 +13,7 @@ import {
   Edit,
   Eye,
   Filter,
+  Plus,
 } from 'lucide-react';
 import { ShopProfile } from '../types';
 
@@ -24,6 +25,7 @@ interface OrderListProps {
   onEditOrder: (order: Order) => void;
   onDeleteOrder: (orderId: string) => void;
   onSendQuickReminder: (order: Order) => void;
+  onOpenNewOrder?: () => void;
 }
 
 export const OrderList: React.FC<OrderListProps> = ({
@@ -34,6 +36,7 @@ export const OrderList: React.FC<OrderListProps> = ({
   onEditOrder,
   onDeleteOrder,
   onSendQuickReminder,
+  onOpenNewOrder,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'ALL' | PaymentStatus | 'OVERDUE'>('ALL');
@@ -198,6 +201,15 @@ export const OrderList: React.FC<OrderListProps> = ({
               ? 'Tidak ada pesanan yang sesuai dengan kata kunci pencarian.'
               : 'Belum ada pesanan terdaftar. Klik "+ Pesanan Baru" di atas untuk mencatat pesanan.'}
           </p>
+          {!searchTerm && onOpenNewOrder && (
+            <button
+              onClick={onOpenNewOrder}
+              className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 bg-[#264936] text-white text-xs font-bold rounded-lg hover:bg-[#1f3a2c] transition shadow-xs cursor-pointer active:scale-95"
+            >
+              <Plus size={15} className="shrink-0" />
+              <span>+ Pesanan Baru</span>
+            </button>
+          )}
         </div>
       ) : (
         <div className="bg-white rounded-xl border border-stone-200 shadow-2xs overflow-hidden">

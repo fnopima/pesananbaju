@@ -441,6 +441,10 @@ export default function App() {
             setActivePaymentOrder(null);
             setIsWhatsAppReminderOpen(true);
           }}
+          onOpenNewOrder={() => {
+            setOrderToEdit(null);
+            setIsOrderFormOpen(true);
+          }}
         />
       </main>
 
