@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <div className="cursor-pointer shrink-0" onClick={onOpenShopSettings} title="Pengaturan Identitas Toko">
               <div className="flex items-center gap-1 text-lg sm:text-2xl font-black tracking-tight text-white whitespace-nowrap">
-                <span>ByUzmaa</span>
+                <span>HimmahShop</span>
                 <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-emerald-300 inline-block"></span>
               </div>
               <div className="text-[10px] text-emerald-200 tracking-wider hidden sm:block truncate">
