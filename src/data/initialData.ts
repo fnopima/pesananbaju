@@ -1,7 +1,7 @@
 import { Order, ShopProfile } from '../types';
 
 export const DEFAULT_SHOP_PROFILE: ShopProfile = {
-  namaToko: 'ByUzmaa',
+  namaToko: 'HimmahShop',
   tagline: 'saat jalan kita sama',
   alamat: 'Cikarang Selatan, Bekasi',
   email: 'ByUzmaa1@gmail.com',

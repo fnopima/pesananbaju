@@ -71,6 +71,11 @@ export const googleSignIn = async (): Promise<{ user: User; accessToken: string 
     if (errObj?.code === 'auth/cancelled-popup-request') {
       return null;
     }
+    if (errObj?.code === 'auth/unauthorized-domain') {
+      throw new Error(
+        `Domain '${window.location.hostname}' belum terdaftar di Firebase Authorized Domains. Harap tambahkan domain GitHub ini di Firebase Console > Authentication > Settings > Authorized domains.`
+      );
+    }
     if (errObj?.code === 'auth/network-request-failed') {
       throw new Error(
         'Koneksi login Google terhalang atau gagal (network-request-failed). Jika Anda menggunakan preview dalam frame, silakan buka aplikasi di tab browser baru atau periksa koneksi internet.'
