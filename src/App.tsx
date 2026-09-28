@@ -334,18 +334,18 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900 font-sans flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex flex-col">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-5 right-5 z-60 animate-bounce">
           <div
-            className={`px-4 py-2.5 rounded-lg shadow-lg text-xs font-semibold flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-lg shadow-xl text-xs font-semibold flex items-center gap-2 border ${
               toastMessage.type === 'success'
-                ? 'bg-[#264936] text-white'
-                : 'bg-rose-700 text-white'
+                ? 'bg-[#0B192C] text-white border-teal-500/40'
+                : 'bg-rose-700 text-white border-rose-500/40'
             }`}
           >
-            {toastMessage.type === 'success' ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
+            {toastMessage.type === 'success' ? <CheckCircle2 size={16} className="text-teal-400" /> : <AlertCircle size={16} />}
             <span>{toastMessage.text}</span>
           </div>
         </div>
@@ -368,25 +368,25 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Google Drive Status Bar Banner */}
-        <div className="no-print bg-white p-3 sm:p-4 rounded-xl border border-stone-200 shadow-2xs flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="no-print bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="p-2 rounded-lg bg-emerald-50 text-[#264936]">
+            <div className="p-2 rounded-lg bg-teal-50 text-teal-700 border border-teal-100">
               <FileSpreadsheet size={18} />
             </div>
             <div>
-              <div className="font-bold text-stone-800 flex items-center gap-2">
+              <div className="font-bold text-slate-800 flex items-center gap-2">
                 <span>Database Google Sheets</span>
                 {syncState.isConnected ? (
-                  <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-100 text-emerald-800">
+                  <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-teal-100 text-teal-800 border border-teal-200">
                     Online Drive
                   </span>
                 ) : (
-                  <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-100 text-amber-800">
+                  <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-100 text-amber-900 border border-amber-200">
                     Mode Penyimpanan Lokal (Offline)
                   </span>
                 )}
               </div>
-              <div className="text-stone-500 text-[11px] mt-0.5">
+              <div className="text-slate-500 text-[11px] mt-0.5">
                 {syncState.isConnected
                   ? `Tersimpan di Google Drive: ${syncState.userEmail || ''} • ${syncState.lastSyncedAt || 'Tersinkron'}`
                   : 'Hubungkan akun Google untuk menyinkronkan database secara otomatis ke Google Drive Anda.'}
@@ -402,7 +402,7 @@ export default function App() {
                     href={syncState.spreadsheetUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold rounded text-xs transition"
+                    className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded text-xs transition border border-slate-200"
                   >
                     Buka Google Sheet
                   </a>
@@ -410,7 +410,7 @@ export default function App() {
                 <button
                   onClick={handleManualSync}
                   disabled={syncState.isSyncing}
-                  className="px-3 py-1.5 bg-[#264936] text-white font-semibold rounded text-xs hover:bg-[#1f3a2c] disabled:opacity-50 transition shadow-xs"
+                  className="px-3 py-1.5 bg-teal-700 text-white font-semibold rounded text-xs hover:bg-teal-800 disabled:opacity-50 transition shadow-xs cursor-pointer"
                 >
                   {syncState.isSyncing ? 'Sinkron...' : 'Sinkronkan'}
                 </button>
@@ -418,7 +418,7 @@ export default function App() {
             ) : (
               <button
                 onClick={() => setIsGoogleSyncModalOpen(true)}
-                className="px-3 py-1.5 bg-[#264936] text-white font-semibold rounded text-xs hover:bg-[#1f3a2c] transition shadow-xs"
+                className="px-3 py-1.5 bg-teal-700 text-white font-semibold rounded text-xs hover:bg-teal-800 transition shadow-xs cursor-pointer"
               >
                 Hubungkan Google Drive
               </button>
@@ -453,14 +453,15 @@ export default function App() {
       {/* 1. Exact ByUzmaa Invoice Modal */}
       {activeInvoiceOrder && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white w-full max-w-3xl rounded-xl shadow-2xl border border-stone-300 overflow-hidden my-6">
-            <div className="no-print bg-stone-900 text-white p-3 flex items-center justify-between">
-              <span className="text-xs font-bold">
+          <div className="bg-white w-full max-w-3xl rounded-xl shadow-2xl border border-slate-300 overflow-hidden my-6">
+            <div className="no-print bg-[#0B192C] text-white p-3 flex items-center justify-between border-b border-[#1E293B]">
+              <span className="text-xs font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
                 Pratinjau Invoice: {activeInvoiceOrder.invoiceNo}
               </span>
               <button
                 onClick={() => setActiveInvoiceOrder(null)}
-                className="text-stone-400 hover:text-white p-1"
+                className="text-slate-400 hover:text-white p-1"
               >
                 <X size={18} />
               </button>

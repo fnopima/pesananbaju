@@ -32,21 +32,24 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
 }) => {
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white w-full max-w-lg rounded-xl shadow-xl border border-stone-200 overflow-hidden my-6">
+      <div className="bg-white w-full max-w-lg rounded-xl shadow-xl border border-slate-200 overflow-hidden my-6">
         {/* Header */}
-        <div className="bg-[#264936] text-white p-4 flex items-center justify-between">
+        <div className="bg-[#0B192C] text-white p-4 flex items-center justify-between border-b border-[#1E293B]">
           <div className="flex items-center gap-2">
-            <HardDrive size={22} className="text-emerald-300" />
+            <HardDrive size={22} className="text-teal-400" />
             <div>
-              <h2 className="text-base font-bold">Database Google Sheets & Google Drive</h2>
-              <p className="text-xs text-emerald-100">
+              <h2 className="text-base font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                Database Google Sheets & Google Drive
+              </h2>
+              <p className="text-xs text-teal-200">
                 Penyimpanan data pesanan, rincian barang, & cicilan di Google Drive pribadi
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-emerald-200 hover:text-white p-1 rounded hover:bg-[#1f3a2c] transition"
+            className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition"
           >
             <X size={20} />
           </button>
@@ -57,22 +60,22 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
           <div
             className={`p-4 rounded-lg border ${
               syncState.isConnected
-                ? 'bg-emerald-50/70 border-emerald-200'
-                : 'bg-amber-50/70 border-amber-200'
+                ? 'bg-teal-50/70 border-teal-200'
+                : 'bg-amber-50/70 border-amber-300'
             }`}
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2">
                 {syncState.isConnected ? (
-                  <CheckCircle2 size={18} className="text-emerald-600" />
+                  <CheckCircle2 size={18} className="text-teal-600" />
                 ) : (
                   <AlertCircle size={18} className="text-amber-600" />
                 )}
                 <div>
-                  <div className="font-bold text-stone-900 text-sm">
+                  <div className="font-bold text-slate-900 text-sm">
                     {syncState.isConnected ? 'Terhubung dengan Google Drive' : 'Belum Terhubung dengan Akun Google'}
                   </div>
-                  <div className="text-stone-600 text-[11px] mt-0.5">
+                  <div className="text-slate-600 text-[11px] mt-0.5">
                     {syncState.isConnected
                       ? `Akun: ${syncState.userEmail || 'Google User'}`
                       : 'Hubungkan akun Google Anda untuk menyimpan spreadsheet di Drive pribadi'}
@@ -83,7 +86,7 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
               {syncState.isConnected && (
                 <button
                   onClick={onSignOut}
-                  className="text-stone-500 hover:text-rose-600 p-1 flex items-center gap-1 text-[11px]"
+                  className="text-slate-500 hover:text-rose-600 p-1 flex items-center gap-1 text-[11px] cursor-pointer"
                   title="Putuskan Akun"
                 >
                   <LogOut size={13} /> Putuskan
@@ -98,7 +101,7 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
                   type="button"
                   onClick={onSignIn}
                   disabled={syncState.isSyncing}
-                  className="gsi-material-button flex items-center justify-center gap-3 px-4 py-2.5 bg-white border border-stone-300 rounded-lg shadow-xs hover:bg-stone-50 transition w-full sm:w-auto font-medium text-stone-700 disabled:opacity-50"
+                  className="gsi-material-button flex items-center justify-center gap-3 px-4 py-2.5 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition w-full sm:w-auto font-medium text-slate-700 disabled:opacity-50 cursor-pointer"
                 >
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-4 h-4">
                     <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
@@ -108,7 +111,7 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
                   </svg>
                   <span>{syncState.isSyncing ? 'Menghubungkan...' : 'Masuk dengan Google Drive'}</span>
                 </button>
-                <span className="text-[11px] text-stone-500 mt-2 text-center">
+                <span className="text-[11px] text-slate-500 mt-2 text-center">
                   Mengakses Google Drive & Spreadsheet Anda secara aman dengan izin
                 </span>
 
@@ -132,35 +135,35 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
           {/* Connected Details */}
           {syncState.isConnected && (
             <div className="space-y-3">
-              <div className="bg-stone-50 p-3.5 rounded-lg border border-stone-200 space-y-2">
+              <div className="bg-slate-50 p-3.5 rounded-lg border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <FileSpreadsheet className="text-emerald-700" size={18} />
-                    <span className="font-bold text-stone-800">{SPREADSHEET_TITLE}</span>
+                    <FileSpreadsheet className="text-teal-700" size={18} />
+                    <span className="font-bold text-slate-800">{SPREADSHEET_TITLE}</span>
                   </div>
                   {syncState.spreadsheetUrl && (
                     <a
                       href={syncState.spreadsheetUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[#264936] hover:underline font-semibold flex items-center gap-1 text-[11px]"
+                      className="text-teal-700 hover:underline font-semibold flex items-center gap-1 text-[11px]"
                     >
                       Buka di Drive <ExternalLink size={12} />
                     </a>
                   )}
                 </div>
 
-                <div className="text-[11px] text-stone-600">
+                <div className="text-[11px] text-slate-600">
                   <div>Tersimpan di: <strong>Google Drive Pribadi Anda</strong></div>
                   <div>Terakhir disinkronkan: <strong>{syncState.lastSyncedAt || 'Baru saja'}</strong></div>
                 </div>
 
                 {/* Structure info */}
-                <div className="mt-2 pt-2 border-t border-stone-200">
-                  <div className="text-[11px] font-semibold text-stone-700 mb-1 flex items-center gap-1">
+                <div className="mt-2 pt-2 border-t border-slate-200">
+                  <div className="text-[11px] font-semibold text-slate-700 mb-1 flex items-center gap-1">
                     <Layers size={13} /> Tab Sheet Otomatis Dikelola:
                   </div>
-                  <ul className="list-disc list-inside text-[11px] text-stone-600 space-y-0.5 ml-1">
+                  <ul className="list-disc list-inside text-[11px] text-slate-600 space-y-0.5 ml-1">
                     <li><strong>Ringkasan Pesanan</strong> (Tagihan, DP, Cicilan, Status, Kekurangan)</li>
                     <li><strong>Rincian Barang</strong> (Detail setiap baju, harga satuan, diskon, jumlah)</li>
                     <li><strong>Riwayat Pembayaran & Cicilan</strong> (Tanggal, tahap, nominal, metode)</li>
@@ -170,14 +173,14 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
 
               {/* Sync Action */}
               <div className="flex items-center justify-between pt-1">
-                <div className="text-[11px] text-stone-500">
+                <div className="text-[11px] text-slate-500">
                   Jumlah pesanan saat ini: <strong>{orders.length} pesanan</strong>
                 </div>
 
                 <button
                   onClick={onManualSync}
                   disabled={syncState.isSyncing}
-                  className="px-3 py-1.5 bg-[#264936] text-white font-bold rounded hover:bg-[#1f3a2c] flex items-center gap-1.5 disabled:opacity-50 transition shadow-xs"
+                  className="px-3 py-1.5 bg-teal-700 text-white font-bold rounded hover:bg-teal-800 flex items-center gap-1.5 disabled:opacity-50 transition shadow-xs cursor-pointer"
                 >
                   <RefreshCw size={13} className={syncState.isSyncing ? 'animate-spin' : ''} />
                   {syncState.isSyncing ? 'Menyinkronkan...' : 'Sinkronkan Sekarang'}
@@ -193,16 +196,16 @@ export const GoogleDriveSyncModal: React.FC<GoogleDriveSyncModalProps> = ({
           )}
 
           {/* Info note */}
-          <div className="text-[11px] text-stone-500 bg-stone-100 p-2.5 rounded">
+          <div className="text-[11px] text-slate-500 bg-slate-100 p-2.5 rounded">
             <strong>Catatan Keamanan:</strong> Data Anda juga disimpan di memori browser lokal (Local Storage) sehingga tetap aman dan tidak akan hilang meskipun saat offline atau sebelum login ke Google Drive.
           </div>
         </div>
 
         {/* Footer */}
-        <div className="bg-stone-100 px-5 py-3 border-t border-stone-200 flex justify-end">
+        <div className="bg-slate-100 px-5 py-3 border-t border-slate-200 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-white border border-stone-300 text-stone-700 text-xs font-semibold rounded hover:bg-stone-50"
+            className="px-4 py-1.5 bg-white border border-slate-300 text-slate-700 text-xs font-semibold rounded hover:bg-slate-50 cursor-pointer"
           >
             Tutup
           </button>

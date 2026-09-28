@@ -84,39 +84,42 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white w-full max-w-4xl rounded-xl shadow-xl border border-stone-200 overflow-hidden my-6">
         {/* Header */}
-        <div className="bg-[#264936] text-white p-4 flex items-center justify-between">
+        <div className="bg-[#0B192C] text-white p-4 flex items-center justify-between border-b border-[#1E293B]">
           <div className="flex items-center gap-2">
-            <MessageCircle size={22} className="text-emerald-300" />
+            <MessageCircle size={22} className="text-teal-400" />
             <div>
-              <h2 className="text-base font-bold">Pusat Notifikasi & Pengingat WhatsApp Jatuh Tempo</h2>
-              <p className="text-xs text-emerald-100">
+              <h2 className="text-base font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                Pusat Notifikasi & Pengingat WhatsApp Jatuh Tempo
+              </h2>
+              <p className="text-xs text-teal-200">
                 Kirim pesan otomatis pengingat cicilan dan pelunasan busana ke nomor WhatsApp pelanggan
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-emerald-200 hover:text-white p-1 rounded hover:bg-[#1f3a2c] transition"
+            className="text-teal-200 hover:text-white p-1 rounded hover:bg-slate-800 transition"
           >
             <X size={20} />
           </button>
         </div>
 
         {/* Filter Bar */}
-        <div className="bg-stone-50 border-b border-stone-200 px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
-          <div className="flex items-center gap-1.5 font-semibold text-stone-600">
+        <div className="bg-slate-50 border-b border-slate-200 px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="flex items-center gap-1.5 font-semibold text-slate-600">
             <span>Filter Jatuh Tempo:</span>
             <button
               onClick={() => setFilterType('all')}
-              className={`px-2.5 py-1 rounded transition ${
-                filterType === 'all' ? 'bg-[#264936] text-white' : 'bg-white border text-stone-700 hover:bg-stone-100'
+              className={`px-2.5 py-1 rounded transition cursor-pointer ${
+                filterType === 'all' ? 'bg-teal-700 text-white' : 'bg-white border text-slate-700 hover:bg-slate-100'
               }`}
             >
               Semua Belum Lunas ({unpaidOrders.length})
             </button>
             <button
               onClick={() => setFilterType('overdue')}
-              className={`px-2.5 py-1 rounded transition flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded transition flex items-center gap-1 cursor-pointer ${
                 filterType === 'overdue' ? 'bg-rose-700 text-white' : 'bg-white border border-rose-200 text-rose-700 hover:bg-rose-50'
               }`}
             >
@@ -125,8 +128,8 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
             </button>
             <button
               onClick={() => setFilterType('today')}
-              className={`px-2.5 py-1 rounded transition flex items-center gap-1 ${
-                filterType === 'today' ? 'bg-amber-600 text-white' : 'bg-white border border-amber-200 text-amber-700 hover:bg-amber-50'
+              className={`px-2.5 py-1 rounded transition flex items-center gap-1 cursor-pointer ${
+                filterType === 'today' ? 'bg-amber-600 text-white font-bold' : 'bg-white border border-amber-200 text-amber-700 hover:bg-amber-50'
               }`}
             >
               <Clock size={12} />
@@ -134,7 +137,7 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
             </button>
           </div>
 
-          <div className="text-stone-500 text-[11px]">
+          <div className="text-slate-500 text-[11px]">
             Toko: <strong>{shopProfile.namaToko}</strong> ({shopProfile.noHp})
           </div>
         </div>
@@ -171,42 +174,42 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
                       onClick={() => setSelectedOrderId(order.id)}
                       className={`p-3 rounded-lg border cursor-pointer transition text-xs ${
                         isSelected
-                          ? 'bg-white border-[#264936] ring-1 ring-[#264936] shadow-xs'
-                          : 'bg-white border-stone-200 hover:border-stone-300'
+                          ? 'bg-white border-teal-600 ring-1 ring-teal-600 shadow-xs'
+                          : 'bg-white border-slate-200 hover:border-slate-300'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-stone-900">{order.namaPelanggan}</span>
+                        <span className="font-bold text-slate-900">{order.namaPelanggan}</span>
                         {status === 'overdue' && (
                           <span className="px-1.5 py-0.5 text-[10px] font-bold rounded bg-rose-100 text-rose-800 flex items-center gap-0.5">
                             <AlertTriangle size={10} /> Overdue
                           </span>
                         )}
                         {status === 'today' && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-bold rounded bg-amber-100 text-amber-800 flex items-center gap-0.5">
+                          <span className="px-1.5 py-0.5 text-[10px] font-bold rounded bg-amber-100 text-amber-900 flex items-center gap-0.5 border border-amber-200">
                             <Clock size={10} /> Hari Ini
                           </span>
                         )}
                         {status === 'upcoming' && (
-                          <span className="px-1.5 py-0.5 text-[10px] font-medium rounded bg-stone-100 text-stone-700">
+                          <span className="px-1.5 py-0.5 text-[10px] font-medium rounded bg-slate-100 text-slate-700">
                             {formatTanggal(order.jatuhTempo || '')}
                           </span>
                         )}
                       </div>
 
-                      <div className="text-stone-600 text-[11px] mb-1">
+                      <div className="text-slate-600 text-[11px] mb-1">
                         {order.brandSeries} • {order.invoiceNo}
                       </div>
 
-                      <div className="flex items-center justify-between pt-1 border-t border-stone-100">
-                        <span className="text-stone-500 font-mono text-[11px]">{order.noWhatsApp}</span>
+                      <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                        <span className="text-slate-500 font-mono text-[11px]">{order.noWhatsApp}</span>
                         <span className="font-bold text-rose-700">
                           Sisa {formatRupiah(order.kekurangan)}
                         </span>
                       </div>
 
                       {order.terakhirIngatkanWA && (
-                        <div className="mt-1 text-[10px] text-stone-400">
+                        <div className="mt-1 text-[10px] text-slate-400">
                           Terakhir diingatkan: {formatTanggal(order.terakhirIngatkanWA)}
                         </div>
                       )}
@@ -220,12 +223,12 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
             <div className="md:col-span-3 p-4 flex flex-col justify-between overflow-y-auto bg-white">
               {activeOrder ? (
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-2 border-b border-stone-200">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <div>
-                      <div className="text-sm font-bold text-stone-900">
+                      <div className="text-sm font-bold text-slate-900">
                         Pesan untuk: {activeOrder.namaPelanggan}
                       </div>
-                      <div className="text-xs text-stone-500">
+                      <div className="text-xs text-slate-500">
                         WA: <strong>{activeOrder.noWhatsApp}</strong> • Sisa Tagihan:{' '}
                         <strong className="text-rose-700">{formatRupiah(activeOrder.kekurangan)}</strong>
                       </div>
@@ -234,7 +237,7 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={handleCopy}
-                        className="px-2.5 py-1 text-xs bg-stone-100 hover:bg-stone-200 rounded border border-stone-300 text-stone-700 flex items-center gap-1"
+                        className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 rounded border border-slate-300 text-slate-700 flex items-center gap-1 cursor-pointer"
                         title="Salin Teks Pesan"
                       >
                         <Copy size={13} />
@@ -245,22 +248,22 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
 
                   {/* Message Editor / Preview */}
                   <div>
-                    <label className="block text-xs font-semibold text-stone-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
                       Isi Pesan WhatsApp Pengingat (Dapat Disunting):
                     </label>
                     <textarea
                       rows={12}
                       value={customMessage}
                       onChange={(e) => setCustomMessage(e.target.value)}
-                      className="w-full text-xs font-mono p-3 bg-stone-50 border border-stone-300 rounded-lg focus:outline-hidden focus:border-[#264936] text-stone-800 leading-relaxed"
+                      className="w-full text-xs font-mono p-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-hidden focus:border-teal-600 focus:ring-1 focus:ring-teal-600 text-slate-800 leading-relaxed"
                     />
                   </div>
 
                   {/* Send Action */}
-                  <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-lg flex items-center justify-between">
-                    <div className="text-xs text-emerald-800">
+                  <div className="bg-teal-50 border border-teal-200 p-3 rounded-lg flex items-center justify-between">
+                    <div className="text-xs text-teal-900">
                       <div>Klik tombol untuk langsung membuka WhatsApp pelanggan dengan pesan ini.</div>
-                      <div className="text-[11px] text-emerald-600 mt-0.5">
+                      <div className="text-[11px] text-teal-700 mt-0.5">
                         Tujuan: +{activeOrder.noWhatsApp}
                       </div>
                     </div>
@@ -268,7 +271,7 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
                     <button
                       id="btn-send-whatsapp-action"
                       onClick={handleSendWA}
-                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 shadow-sm transition"
+                      className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 shadow-sm transition cursor-pointer"
                     >
                       <Send size={15} />
                       Buka WhatsApp Sekarang
@@ -276,7 +279,7 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-10 text-stone-400 text-xs">
+                <div className="text-center py-10 text-slate-400 text-xs">
                   Silakan pilih pelanggan di sebelah kiri
                 </div>
               )}
@@ -285,10 +288,10 @@ export const WhatsAppReminderModal: React.FC<WhatsAppReminderModalProps> = ({
         )}
 
         {/* Footer */}
-        <div className="bg-stone-100 px-5 py-3 border-t border-stone-200 flex justify-end">
+        <div className="bg-slate-100 px-5 py-3 border-t border-slate-200 flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-white border border-stone-300 text-stone-700 text-xs font-semibold rounded hover:bg-stone-50"
+            className="px-4 py-1.5 bg-white border border-slate-300 text-slate-700 text-xs font-semibold rounded hover:bg-slate-50 cursor-pointer"
           >
             Tutup
           </button>

@@ -146,7 +146,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
             <button
               id="btn-record-installment"
               onClick={onOpenPaymentModal}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-[#264936] rounded hover:bg-[#1d3829] transition shadow-xs"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 rounded hover:bg-teal-800 transition shadow-xs cursor-pointer"
               title="Catat Cicilan / DP"
             >
               <CreditCard size={14} />
@@ -159,7 +159,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
             id="btn-download-pdf"
             onClick={handleDownloadPdf}
             disabled={isGeneratingPdf}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 disabled:opacity-60 rounded transition shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-60 rounded transition shadow-xs cursor-pointer"
             title="Unduh Invoice sebagai file PDF"
           >
             {isGeneratingPdf ? (
@@ -179,7 +179,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
           <button
             id="btn-print-invoice"
             onClick={handlePrint}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-stone-800 hover:bg-stone-900 rounded transition shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-[#0B192C] hover:bg-slate-800 rounded transition shadow-xs cursor-pointer"
             title="Cetak langsung ke printer atau dialog cetak"
           >
             <Printer size={14} />
@@ -220,9 +220,9 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
       >
         {/* Top Brand Header */}
         <div className="text-center pb-4">
-          <div className="flex items-center justify-center gap-1.5 text-3xl font-extrabold tracking-tight" style={{ color: '#000000' }}>
-            <span>ByUzmaa</span>
-            <span className="inline-block w-3.5 h-3.5 rounded-full ml-0.5" style={{ backgroundColor: '#000000' }}></span>
+          <div className="flex items-center justify-center gap-1.5 text-3xl font-extrabold tracking-tight" style={{ color: '#0B192C' }}>
+            <span>{shopProfile.namaToko || 'HimmahShop'}</span>
+            <span className="inline-block w-3.5 h-3.5 rounded-full ml-0.5" style={{ backgroundColor: '#D4AF37' }}></span>
           </div>
           <div className="text-xs tracking-wide font-medium mt-0.5" style={{ color: '#57534e' }}>
             {shopProfile.tagline}
@@ -232,20 +232,20 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
           </div>
         </div>
 
-        {/* Dark Pine Green Banner */}
+        {/* Navy & Gold/Teal Banner */}
         <div
           className="text-white px-5 py-4 flex flex-row justify-between items-center mt-2"
-          style={{ backgroundColor: '#264936', color: '#ffffff' }}
+          style={{ backgroundColor: '#0B192C', color: '#ffffff' }}
         >
           {/* Left: Kepada & Brand/Series */}
           <div className="space-y-1">
-            <div className="text-xs font-medium tracking-wide" style={{ color: '#d1fae5' }}>
+            <div className="text-xs font-semibold tracking-wide" style={{ color: '#5EEAD4' }}>
               Kepada :
             </div>
             <div className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight" style={{ color: '#ffffff' }}>
               {order.namaPelanggan}
             </div>
-            <div className="text-xs font-medium tracking-wide pt-1" style={{ color: '#d1fae5' }}>
+            <div className="text-xs font-semibold tracking-wide pt-1" style={{ color: '#5EEAD4' }}>
               Brand / Series :
             </div>
             <div className="text-sm sm:text-base font-bold tracking-tight text-white leading-tight" style={{ color: '#ffffff' }}>
@@ -258,7 +258,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
             <div className="text-2xl sm:text-3xl font-extrabold tracking-wider" style={{ color: '#ffffff' }}>
               INVOICE
             </div>
-            <div className="text-sm sm:text-base font-semibold mt-1" style={{ color: '#d1fae5' }}>
+            <div className="text-sm sm:text-base font-semibold mt-1" style={{ color: '#FDE68A' }}>
               {formatTanggal(order.tanggal)}
             </div>
           </div>
@@ -268,7 +268,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
         <div className="mt-3 overflow-x-auto">
           <table className="w-full border-collapse border border-black text-xs sm:text-sm" style={{ borderColor: '#000000' }}>
             <thead>
-              <tr className="text-white font-semibold text-center border-b border-black" style={{ backgroundColor: '#1f3e2e', color: '#ffffff', borderColor: '#000000' }}>
+              <tr className="text-white font-semibold text-center border-b border-black" style={{ backgroundColor: '#132A4A', color: '#ffffff', borderColor: '#000000' }}>
                 <th className="py-1.5 px-2 border-r border-black w-10" style={{ borderColor: '#000000' }}>No</th>
                 <th className="py-1.5 px-3 border-r border-black text-center" style={{ borderColor: '#000000' }}>Nama Barang</th>
                 <th className="py-1.5 px-3 border-r border-black w-28 text-center" style={{ borderColor: '#000000' }}>Harga</th>
@@ -404,7 +404,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
               {order.pembayaran.map((p, idx) => (
                 <div key={p.id || idx} className="p-2 flex items-center justify-between" style={{ borderColor: '#e7e5e4', color: '#44403c' }}>
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center" style={{ backgroundColor: '#d1fae5', color: '#065f46' }}>
+                    <span className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center" style={{ backgroundColor: '#CCFBF1', color: '#0F766E' }}>
                       {idx + 1}
                     </span>
                     <div>
@@ -413,7 +413,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
                       {p.catatan && <span className="ml-2 italic" style={{ color: '#78716c' }}>"{p.catatan}"</span>}
                     </div>
                   </div>
-                  <div className="font-semibold" style={{ color: '#065f46' }}>
+                  <div className="font-semibold" style={{ color: '#0F766E' }}>
                     {formatRupiah(p.jumlah)} <span className="text-[10px] font-normal" style={{ color: '#78716c' }}>via {p.metode}</span>
                   </div>
                 </div>
@@ -424,7 +424,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
 
         {/* Bank & Payment Info Footer */}
         <div className="mt-6 pt-3 text-center border-t text-xs" style={{ borderColor: '#e7e5e4', color: '#78716c' }}>
-          <div>Silakan melakukan pembayaran ke rekening: <strong style={{ color: '#1c1917' }}>{shopProfile.bankInfo}</strong></div>
+          <div>Silakan melakukan pembayaran ke rekening: <strong style={{ color: '#0B192C' }}>{shopProfile.bankInfo}</strong></div>
           <div className="mt-0.5 text-[11px]" style={{ color: '#a8a29e' }}>
             Terima kasih telah berbelanja pakaian di {shopProfile.namaToko}. Harap simpan bukti pembayaran dan invoice ini.
           </div>
@@ -432,8 +432,8 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
       </div>
 
       {/* Bottom Action Bar for Quick Access */}
-      <div className="no-print flex flex-wrap items-center justify-between gap-2 bg-stone-100 p-3 rounded-lg border border-stone-200">
-        <div className="text-xs text-stone-600">
+      <div className="no-print flex flex-wrap items-center justify-between gap-2 bg-slate-100 p-3 rounded-lg border border-slate-200">
+        <div className="text-xs text-slate-700">
           Invoice <strong>{order.invoiceNo}</strong> ({order.namaPelanggan}) • Total: <strong>{formatRupiah(order.totalTagihan)}</strong>
         </div>
         <div className="flex items-center gap-2">
@@ -441,7 +441,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
             id="btn-download-pdf-bottom"
             onClick={handleDownloadPdf}
             disabled={isGeneratingPdf}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-rose-700 hover:bg-rose-800 disabled:opacity-60 rounded transition shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-60 rounded transition shadow-xs cursor-pointer"
           >
             {isGeneratingPdf ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
             <span>Unduh PDF</span>
@@ -449,7 +449,7 @@ export const InvoiceView: React.FC<InvoiceViewProps> = ({
           <button
             id="btn-print-invoice-bottom"
             onClick={handlePrint}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-stone-800 hover:bg-stone-900 rounded transition shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-[#0B192C] hover:bg-slate-800 rounded transition shadow-xs cursor-pointer"
           >
             <Printer size={14} />
             <span>Cetak Invoice</span>

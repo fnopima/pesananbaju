@@ -76,20 +76,20 @@ export const OrderList: React.FC<OrderListProps> = ({
     <div className="space-y-5">
       {/* Stats Cards Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs">
-          <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
             Total Semua Pesanan
           </div>
           <div className="flex items-baseline justify-between mt-1">
-            <span className="text-2xl font-black text-stone-900">{totalOrders}</span>
-            <span className="text-xs text-stone-500">Omzet: {formatRupiah(totalOmzet)}</span>
+            <span className="text-2xl font-black text-[#0B192C]">{totalOrders}</span>
+            <span className="text-xs text-slate-500">Omzet: {formatRupiah(totalOmzet)}</span>
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-amber-200 bg-amber-50/40 shadow-2xs">
-          <div className="text-xs font-semibold text-amber-800 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white p-4 rounded-xl border border-amber-300 bg-amber-50/50 shadow-2xs">
+          <div className="text-xs font-semibold text-amber-900 uppercase tracking-wider flex items-center justify-between">
             <span>Sisa Cicilan / Piutang</span>
-            <span className="text-[10px] bg-amber-200 px-1.5 py-0.5 rounded font-bold">
+            <span className="text-[10px] bg-amber-200 text-amber-950 px-1.5 py-0.5 rounded font-bold">
               {unpaidOrders.length} order
             </span>
           </div>
@@ -98,14 +98,14 @@ export const OrderList: React.FC<OrderListProps> = ({
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 shadow-2xs">
-          <div className="text-xs font-semibold text-emerald-800 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-white p-4 rounded-xl border border-teal-300 bg-teal-50/50 shadow-2xs">
+          <div className="text-xs font-semibold text-teal-900 uppercase tracking-wider flex items-center justify-between">
             <span>Sudah Lunas</span>
-            <CheckCircle2 size={16} className="text-emerald-600" />
+            <CheckCircle2 size={16} className="text-teal-600" />
           </div>
           <div className="flex items-baseline justify-between mt-1">
-            <span className="text-2xl font-black text-emerald-900">{lunasOrders.length}</span>
-            <span className="text-xs text-emerald-700 font-medium">
+            <span className="text-2xl font-black text-teal-950">{lunasOrders.length}</span>
+            <span className="text-xs text-teal-700 font-medium">
               {totalOrders > 0 ? `${Math.round((lunasOrders.length / totalOrders) * 100)}% Lunas` : '0%'}
             </span>
           </div>
@@ -124,33 +124,33 @@ export const OrderList: React.FC<OrderListProps> = ({
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Cari pelanggan, invoice, seri, no WA..."
-            className="w-full pl-9 pr-3 py-2 text-xs bg-stone-50 border border-stone-300 rounded-lg focus:outline-hidden focus:border-[#264936]"
+            className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-hidden focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
         </div>
 
         <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 text-xs">
-          <span className="text-stone-500 font-semibold flex items-center gap-1 pl-1">
+          <span className="text-slate-500 font-semibold flex items-center gap-1 pl-1">
             <Filter size={13} /> Filter:
           </span>
           <button
             onClick={() => setStatusFilter('ALL')}
-            className={`px-2.5 py-1 rounded-md font-medium transition ${
-              statusFilter === 'ALL' ? 'bg-[#264936] text-white' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+            className={`px-2.5 py-1 rounded-md font-medium transition cursor-pointer ${
+              statusFilter === 'ALL' ? 'bg-[#0B192C] text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             Semua ({orders.length})
           </button>
           <button
             onClick={() => setStatusFilter('OVERDUE')}
-            className={`px-2.5 py-1 rounded-md font-medium transition flex items-center gap-1 ${
+            className={`px-2.5 py-1 rounded-md font-medium transition flex items-center gap-1 cursor-pointer ${
               statusFilter === 'OVERDUE'
                 ? 'bg-rose-700 text-white'
                 : 'bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100'
@@ -160,30 +160,30 @@ export const OrderList: React.FC<OrderListProps> = ({
           </button>
           <button
             onClick={() => setStatusFilter('Cicilan Sebagian')}
-            className={`px-2.5 py-1 rounded-md font-medium transition ${
+            className={`px-2.5 py-1 rounded-md font-medium transition cursor-pointer ${
               statusFilter === 'Cicilan Sebagian'
-                ? 'bg-purple-700 text-white'
-                : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                ? 'bg-amber-600 text-white font-bold'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             Cicilan
           </button>
           <button
             onClick={() => setStatusFilter('DP Saja')}
-            className={`px-2.5 py-1 rounded-md font-medium transition ${
+            className={`px-2.5 py-1 rounded-md font-medium transition cursor-pointer ${
               statusFilter === 'DP Saja'
-                ? 'bg-blue-700 text-white'
-                : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                ? 'bg-teal-800 text-white font-bold'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             DP Saja
           </button>
           <button
             onClick={() => setStatusFilter('Lunas')}
-            className={`px-2.5 py-1 rounded-md font-medium transition ${
+            className={`px-2.5 py-1 rounded-md font-medium transition cursor-pointer ${
               statusFilter === 'Lunas'
-                ? 'bg-emerald-700 text-white'
-                : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                ? 'bg-teal-600 text-white font-bold'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             Lunas ({lunasOrders.length})
@@ -193,10 +193,10 @@ export const OrderList: React.FC<OrderListProps> = ({
 
       {/* Orders List Table / Cards */}
       {filteredOrders.length === 0 ? (
-        <div className="bg-white p-12 text-center rounded-xl border border-dashed border-stone-300 text-stone-500">
-          <FileText size={36} className="mx-auto text-stone-400 mb-2" />
-          <h4 className="font-bold text-stone-700 text-sm">Tidak Ada Data Pesanan</h4>
-          <p className="text-xs text-stone-400 mt-1">
+        <div className="bg-white p-12 text-center rounded-xl border border-dashed border-slate-300 text-slate-500">
+          <FileText size={36} className="mx-auto text-slate-400 mb-2" />
+          <h4 className="font-bold text-slate-700 text-sm">Tidak Ada Data Pesanan</h4>
+          <p className="text-xs text-slate-400 mt-1">
             {searchTerm
               ? 'Tidak ada pesanan yang sesuai dengan kata kunci pencarian.'
               : 'Belum ada pesanan terdaftar. Klik "+ Pesanan Baru" di atas untuk mencatat pesanan.'}
@@ -204,7 +204,7 @@ export const OrderList: React.FC<OrderListProps> = ({
           {!searchTerm && onOpenNewOrder && (
             <button
               onClick={onOpenNewOrder}
-              className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 bg-[#264936] text-white text-xs font-bold rounded-lg hover:bg-[#1f3a2c] transition shadow-xs cursor-pointer active:scale-95"
+              className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 bg-teal-700 text-white text-xs font-bold rounded-lg hover:bg-teal-800 transition shadow-xs cursor-pointer active:scale-95"
             >
               <Plus size={15} className="shrink-0" />
               <span>+ Pesanan Baru</span>
@@ -212,11 +212,11 @@ export const OrderList: React.FC<OrderListProps> = ({
           )}
         </div>
       ) : (
-        <div className="bg-white rounded-xl border border-stone-200 shadow-2xs overflow-hidden">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left border-collapse">
               <thead>
-                <tr className="bg-stone-100 text-stone-700 font-bold border-b border-stone-200">
+                <tr className="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
                   <th className="py-3 px-4">Invoice & Tanggal</th>
                   <th className="py-3 px-4">Pelanggan & Seri Busana</th>
                   <th className="py-3 px-4">Rincian Barang</th>
@@ -227,7 +227,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                   <th className="py-3 px-4 text-center">Aksi</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-200">
+              <tbody className="divide-y divide-slate-200">
                 {filteredOrders.map((order) => {
                   const isLunas = order.kekurangan <= 0;
                   const isOverdue = !isLunas && order.jatuhTempo && order.jatuhTempo < today;
@@ -235,14 +235,14 @@ export const OrderList: React.FC<OrderListProps> = ({
                   return (
                     <tr
                       key={order.id}
-                      className={`hover:bg-stone-50/80 transition ${
+                      className={`hover:bg-slate-50/80 transition ${
                         isOverdue ? 'bg-rose-50/20' : ''
                       }`}
                     >
                       {/* Invoice & Date */}
                       <td className="py-3 px-4 align-top">
-                        <div className="font-bold text-stone-900 font-mono">{order.invoiceNo}</div>
-                        <div className="text-stone-500 text-[11px] mt-0.5">
+                        <div className="font-bold text-slate-900 font-mono">{order.invoiceNo}</div>
+                        <div className="text-slate-500 text-[11px] mt-0.5">
                           {formatTanggal(order.tanggal)}
                         </div>
                         {order.jatuhTempo && !isLunas && (
@@ -250,7 +250,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                             className={`inline-flex items-center gap-1 text-[10px] font-semibold mt-1 px-1.5 py-0.5 rounded ${
                               isOverdue
                                 ? 'bg-rose-100 text-rose-800'
-                                : 'bg-amber-100 text-amber-800'
+                                : 'bg-amber-100 text-amber-900 border border-amber-200'
                             }`}
                           >
                             <Clock size={10} />
@@ -261,17 +261,17 @@ export const OrderList: React.FC<OrderListProps> = ({
 
                       {/* Customer & Brand/Series */}
                       <td className="py-3 px-4 align-top">
-                        <div className="font-bold text-stone-900 text-sm">
+                        <div className="font-bold text-slate-900 text-sm">
                           {order.namaPelanggan}
                         </div>
-                        <div className="text-stone-600 font-medium text-[11px] mt-0.5">
-                          Seri: <span className="text-[#264936] font-semibold">{order.brandSeries}</span>
+                        <div className="text-slate-600 font-medium text-[11px] mt-0.5">
+                          Seri: <span className="text-teal-700 font-semibold">{order.brandSeries}</span>
                         </div>
-                        <div className="text-stone-400 font-mono text-[11px] mt-0.5">
+                        <div className="text-slate-400 font-mono text-[11px] mt-0.5">
                           {order.noWhatsApp}
                         </div>
                         {order.ekspedisi && (
-                          <div className="text-stone-500 text-[10px]">
+                          <div className="text-slate-500 text-[10px]">
                             Eksp: {order.ekspedisi}
                           </div>
                         )}
@@ -279,10 +279,10 @@ export const OrderList: React.FC<OrderListProps> = ({
 
                       {/* Items */}
                       <td className="py-3 px-4 align-top max-w-xs">
-                        <div className="font-semibold text-stone-800">
+                        <div className="font-semibold text-slate-800">
                           {order.totalItem} item busana
                         </div>
-                        <ul className="text-stone-600 text-[11px] mt-0.5 space-y-0.5">
+                        <ul className="text-slate-600 text-[11px] mt-0.5 space-y-0.5">
                           {order.items.map((it, idx) => (
                             <li key={it.id || idx} className="truncate">
                               • {it.namaBarang} ({it.qty}x)
@@ -293,14 +293,14 @@ export const OrderList: React.FC<OrderListProps> = ({
 
                       {/* Total Tagihan */}
                       <td className="py-3 px-4 align-top text-right whitespace-nowrap">
-                        <div className="font-bold text-stone-900">
+                        <div className="font-bold text-slate-900">
                           {formatRupiah(order.totalTagihan)}
                         </div>
-                        <div className="text-stone-400 text-[10px] mt-0.5">
+                        <div className="text-slate-400 text-[10px] mt-0.5">
                           Subtotal: {formatRupiah(order.subtotal)}
                         </div>
                         {order.biayaRequest > 0 && (
-                          <div className="text-stone-500 text-[10px]">
+                          <div className="text-slate-500 text-[10px]">
                             Req: +{formatRupiah(order.biayaRequest)}
                           </div>
                         )}
@@ -308,14 +308,14 @@ export const OrderList: React.FC<OrderListProps> = ({
 
                       {/* Total Terbayar */}
                       <td className="py-3 px-4 align-top text-right whitespace-nowrap">
-                        <div className="font-bold text-emerald-800">
+                        <div className="font-bold text-teal-800">
                           {formatRupiah(order.totalTerbayar)}
                         </div>
-                        <div className="text-stone-500 text-[10px] mt-0.5">
+                        <div className="text-slate-500 text-[10px] mt-0.5">
                           DP: {formatRupiah(order.totalDp)}
                           {order.totalCicilan > 0 ? ` • Cicilan: ${formatRupiah(order.totalCicilan)}` : ''}
                         </div>
-                        <div className="text-stone-400 text-[10px]">
+                        <div className="text-slate-400 text-[10px]">
                           ({order.pembayaran.length} kali bayar)
                         </div>
                       </td>
@@ -324,12 +324,12 @@ export const OrderList: React.FC<OrderListProps> = ({
                       <td className="py-3 px-4 align-top text-right whitespace-nowrap">
                         <div
                           className={`font-black text-sm ${
-                            isLunas ? 'text-emerald-700' : 'text-rose-700'
+                            isLunas ? 'text-teal-700' : 'text-amber-800'
                           }`}
                         >
                           {formatRupiah(order.kekurangan)}
                         </div>
-                        <div className="text-[10px] text-stone-500 mt-0.5">
+                        <div className="text-[10px] text-slate-500 mt-0.5">
                           {isLunas ? 'Lunas 100%' : 'Sisa belum bayar'}
                         </div>
                       </td>
@@ -337,12 +337,12 @@ export const OrderList: React.FC<OrderListProps> = ({
                       {/* Status Badge */}
                       <td className="py-3 px-4 align-top text-center whitespace-nowrap">
                         <span
-                          className={`inline-block px-2 py-0.5 text-[10px] font-bold rounded-full ${
+                          className={`inline-block px-2.5 py-0.5 text-[10px] font-bold rounded-full ${
                             isLunas
-                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                              ? 'bg-teal-100 text-teal-800 border border-teal-300'
                               : isOverdue
                               ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                              : 'bg-amber-100 text-amber-800 border border-amber-300'
+                              : 'bg-amber-100 text-amber-900 border border-amber-300'
                           }`}
                         >
                           {isLunas ? 'Lunas' : isOverdue ? 'Jatuh Tempo!' : order.statusPembayaran}
@@ -356,8 +356,8 @@ export const OrderList: React.FC<OrderListProps> = ({
                           <button
                             id={`btn-view-invoice-${order.id}`}
                             onClick={() => onViewInvoice(order)}
-                            className="p-1.5 text-stone-700 hover:text-white hover:bg-[#264936] rounded border border-stone-200 transition"
-                            title="Buka Invoice ByUzmaa"
+                            className="p-1.5 text-slate-700 hover:text-white hover:bg-[#0B192C] rounded border border-slate-200 transition"
+                            title="Buka Invoice"
                           >
                             <Eye size={14} />
                           </button>
@@ -367,7 +367,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                             <button
                               id={`btn-record-payment-${order.id}`}
                               onClick={() => onRecordPayment(order)}
-                              className="p-1.5 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded border border-emerald-200 transition"
+                              className="p-1.5 text-teal-800 bg-teal-50 hover:bg-teal-100 rounded border border-teal-200 transition"
                               title="Catat Pembayaran DP / Cicilan"
                             >
                               <CreditCard size={14} />
@@ -379,7 +379,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                             <button
                               id={`btn-wa-reminder-${order.id}`}
                               onClick={() => onSendQuickReminder(order)}
-                              className="p-1.5 text-emerald-700 hover:text-white hover:bg-emerald-600 rounded border border-emerald-200 transition"
+                              className="p-1.5 text-teal-700 hover:text-white hover:bg-teal-600 rounded border border-teal-200 transition"
                               title="Kirim Pengingat WhatsApp"
                             >
                               <MessageCircle size={14} />
@@ -389,7 +389,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                           {/* Edit order */}
                           <button
                             onClick={() => onEditOrder(order)}
-                            className="p-1.5 text-stone-500 hover:text-stone-800 rounded hover:bg-stone-100"
+                            className="p-1.5 text-slate-500 hover:text-slate-800 rounded hover:bg-slate-100"
                             title="Edit Pesanan"
                           >
                             <Edit size={13} />
@@ -402,7 +402,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                                 onDeleteOrder(order.id);
                               }
                             }}
-                            className="p-1.5 text-stone-400 hover:text-rose-600 rounded hover:bg-stone-100"
+                            className="p-1.5 text-slate-400 hover:text-rose-600 rounded hover:bg-slate-100"
                             title="Hapus Pesanan"
                           >
                             <Trash2 size={13} />

@@ -196,21 +196,21 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white w-full max-w-3xl rounded-xl shadow-xl border border-stone-200 overflow-hidden my-6">
         {/* Header */}
-        <div className="bg-[#264936] text-white p-4 flex items-center justify-between">
+        <div className="bg-[#0B192C] text-white p-4 flex items-center justify-between border-b border-[#1E293B]">
           <div className="flex items-center gap-2">
-            <ShoppingBag size={20} className="text-emerald-200" />
+            <ShoppingBag size={20} className="text-teal-400" />
             <div>
               <h2 className="text-base font-bold">
                 {isEditing ? `Edit Pesanan: ${orderToEdit.invoiceNo}` : 'Catat Pesanan Pembelian Pakaian Baru'}
               </h2>
-              <p className="text-xs text-emerald-100">
+              <p className="text-xs text-teal-200">
                 Lengkapi rincian pesanan, busana, harga diskon, DP dan jadwal jatuh tempo cicilan
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-emerald-200 hover:text-white p-1 rounded hover:bg-[#1f3a2c] transition"
+            className="text-teal-200 hover:text-white p-1 rounded hover:bg-slate-800 transition"
           >
             <X size={20} />
           </button>
@@ -229,7 +229,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   type="text"
                   value={invoiceNo}
                   onChange={(e) => setInvoiceNo(e.target.value)}
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden font-mono"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden font-mono"
                   required
                 />
               </div>
@@ -239,7 +239,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   type="date"
                   value={tanggal}
                   onChange={(e) => setTanggal(e.target.value)}
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   required
                 />
               </div>
@@ -249,7 +249,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   type="date"
                   value={jatuhTempo}
                   onChange={(e) => setJatuhTempo(e.target.value)}
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-amber-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-amber-300 rounded focus:border-teal-600 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -264,7 +264,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   value={namaPelanggan}
                   onChange={(e) => setNamaPelanggan(e.target.value)}
                   placeholder="Contoh: Herlin"
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   required
                 />
               </div>
@@ -277,7 +277,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   value={noWhatsApp}
                   onChange={(e) => setNoWhatsApp(e.target.value)}
                   placeholder="Contoh: 083812876096"
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden font-mono"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden font-mono"
                   required
                 />
               </div>
@@ -288,7 +288,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   value={brandSeries}
                   onChange={(e) => setBrandSeries(e.target.value)}
                   placeholder="Contoh: Juju / Farasyah"
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   required
                 />
               </div>
@@ -302,7 +302,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   value={ekspedisi}
                   onChange={(e) => setEkspedisi(e.target.value)}
                   placeholder="JNE REG / J&T / SiCepat"
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                 />
               </div>
               <div className="sm:col-span-2">
@@ -312,7 +312,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                   value={alamat}
                   onChange={(e) => setAlamat(e.target.value)}
                   placeholder="Alamat lengkap penerima busana"
-                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                  className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -327,7 +327,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
               <button
                 type="button"
                 onClick={addItemRow}
-                className="text-xs text-[#264936] font-semibold hover:underline flex items-center gap-1"
+                className="text-xs text-teal-700 font-semibold hover:underline flex items-center gap-1"
               >
                 <Plus size={14} /> Tambah Baris Barang
               </button>
@@ -336,7 +336,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
             <div className="border border-stone-300 rounded-lg overflow-x-auto">
               <table className="w-full border-collapse text-xs">
                 <thead>
-                  <tr className="bg-[#1f3e2e] text-white">
+                  <tr className="bg-[#132A4A] text-white">
                     <th className="py-2 px-2 w-10 text-center">No</th>
                     <th className="py-2 px-3 text-left">Nama Barang & Spesifikasi</th>
                     <th className="py-2 px-2 w-28 text-center">Harga (Rp)</th>
@@ -358,7 +358,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                           value={item.namaBarang}
                           onChange={(e) => handleItemChange(index, 'namaBarang', e.target.value)}
                           placeholder="Misal: Set ped antem dark violet XXL req pb 130"
-                          className="w-full text-xs px-2 py-1 bg-stone-50 border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                          className="w-full text-xs px-2 py-1 bg-stone-50 border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                           required
                         />
                       </td>
@@ -370,7 +370,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                           value={item.harga || ''}
                           onChange={(e) => handleItemChange(index, 'harga', Number(e.target.value))}
                           placeholder="345000"
-                          className="w-full text-xs px-2 py-1 text-right bg-stone-50 border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                          className="w-full text-xs px-2 py-1 text-right bg-stone-50 border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                           required
                         />
                       </td>
@@ -380,7 +380,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                           min="1"
                           value={item.qty}
                           onChange={(e) => handleItemChange(index, 'qty', Number(e.target.value))}
-                          className="w-full text-xs px-2 py-1 text-center bg-stone-50 border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden font-bold"
+                          className="w-full text-xs px-2 py-1 text-center bg-stone-50 border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden font-bold"
                           required
                         />
                       </td>
@@ -392,7 +392,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                           value={item.diskonPersen || ''}
                           onChange={(e) => handleItemChange(index, 'diskonPersen', Number(e.target.value))}
                           placeholder="10"
-                          className="w-full text-xs px-2 py-1 text-center bg-stone-50 border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                          className="w-full text-xs px-2 py-1 text-center bg-stone-50 border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                         />
                       </td>
                       <td className="py-2 px-3 text-right font-bold text-stone-800 whitespace-nowrap">
@@ -434,7 +434,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                     value={biayaRequest || ''}
                     onChange={(e) => setBiayaRequest(Number(e.target.value))}
                     placeholder="Contoh: 15000"
-                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   />
                 </div>
 
@@ -449,7 +449,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                     value={ongkirPacking || ''}
                     onChange={(e) => setOngkirPacking(Number(e.target.value))}
                     placeholder="Contoh: 0 jika COD / belum tahu"
-                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   />
                 </div>
 
@@ -465,7 +465,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                       value={dpAwal || ''}
                       onChange={(e) => setDpAwal(Number(e.target.value))}
                       placeholder="Contoh: 150000"
-                      className="w-full text-xs px-3 py-1.5 bg-white border border-emerald-300 rounded focus:border-[#264936] focus:outline-hidden font-bold"
+                      className="w-full text-xs px-3 py-1.5 bg-white border border-emerald-300 rounded focus:border-teal-600 focus:outline-hidden font-bold"
                     />
                     <p className="text-[11px] text-stone-500 mt-1">
                       DP akan otomatis dicatat sebagai pembayaran pertama.
@@ -482,7 +482,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                     value={catatanKhusus}
                     onChange={(e) => setCatatanKhusus(e.target.value)}
                     placeholder="Contoh: Request pb 130 cm, bahan adem, warna dark violet"
-                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-[#264936] focus:outline-hidden"
+                    className="w-full text-xs px-3 py-1.5 bg-white border border-stone-300 rounded focus:border-teal-600 focus:outline-hidden"
                   />
                 </div>
               </div>
@@ -513,11 +513,11 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
                     <span>Total Tagihan:</span>
                     <span>{formatRupiah(totalTagihan)}</span>
                   </div>
-                  <div className="flex justify-between text-emerald-700 font-medium">
+                  <div className="flex justify-between text-teal-700 font-medium">
                     <span>Total DP / Cicilan Masuk:</span>
                     <span>{formatRupiah(isEditing ? totalTerbayar : Number(dpAwal || 0))}</span>
                   </div>
-                  <div className="flex justify-between font-extrabold text-[#264936] text-base border-t-2 border-[#264936] pt-2">
+                  <div className="flex justify-between font-extrabold text-[#0B192C] text-base border-t-2 border-teal-600 pt-2">
                     <span>Kekurangan / Sisa:</span>
                     <span>{formatRupiah(isEditing ? kekurangan : Math.max(0, totalTagihan - Number(dpAwal || 0)))}</span>
                   </div>
@@ -531,13 +531,13 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold rounded"
+              className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold rounded cursor-pointer"
             >
               Batal
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-[#264936] hover:bg-[#1d392b] text-white text-xs font-bold rounded flex items-center gap-1.5 shadow-xs"
+              className="px-5 py-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold rounded flex items-center gap-1.5 shadow-xs cursor-pointer"
             >
               <CheckCircle2 size={16} /> {isEditing ? 'Simpan Perubahan' : 'Buat Pesanan & Invoice'}
             </button>
